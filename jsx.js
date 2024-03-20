@@ -6,5 +6,6 @@ const props = {
 };
 
 const element = <div {...props} />;
+// const element = <div className="container">Hello world</div>
 
 ReactDOM.render(element, rootElement);
