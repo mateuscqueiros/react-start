@@ -1,6 +1,7 @@
-# Renderizações
+# As bases do React
 
 - O React detecta mudanças no estado e atualiza somente os elementos que mudaram entre renderizações.
+- Hook flow: [React Hook Flow](https://github.com/donavon/hook-flow?tab=readme-ov-file)
 
 ## Estados
 
@@ -17,6 +18,7 @@ setState((previous) => previous + 1);
 - Segunda maneira: Estamos "agendando" uma atualização, que depende do valor anterior do estado.
 
 - Toda vez que uma renderização acontece, todas as variáveis e toda a lógica dentro do escopo da função do componente são refeitos (definidos novamente e executados).
+- Lazy initializers: Você pode passar uma função para o valor inicial de um estado. Essa função será executada apenas uma vez: quando o estado for criado.
 
 ## Efeitos
 
@@ -26,8 +28,21 @@ setState((previous) => previous + 1);
   2. Array de dependências vazio: Executado apenas na primeira renderização.
   3. Array de dependências com valores: Executado quando o valor muda entre renderizações. (Independente de serem estados)
 
-```js
+```jsx
 useEffect(() => {});
 useEffect(() => {}, []);
 useEffect(() => {}, [name, email]);
 ```
+
+# Refs
+
+- Quando precisamos de uma "fuga" das renderizações do React podemos utilizar refs (referências). Elas nos permitem armazenar valores sem o conhecimento do React.
+- Refs são valores mutáveis. Pode-se mudar seus valores usando a propriedade current, diferente dos estados com os quais precisaríamos utilizar setState.
+
+```jsx
+const countRef = useRef(0);
+countRef.current = 1;
+```
+
+- Refs são úteis para acessar valores do DOM através da prop especial ref, para armazenar valores entre eventos (click, change).
+- NUNCA devemos mudar refs enquanto o componente está renderizando, ou seja no corpo da função.
