@@ -20,8 +20,8 @@ function FavoriteAnimal() {
   );
 }
 
-function Display({ name, animal }) {
-  return <div>{`Olá ${name}, seu animal favorito é ${animal}!`}</div>;
+function Display({ name }) {
+  return <div>{`Olá ${name}, você é legal!`}</div>;
 }
 
 function App() {
